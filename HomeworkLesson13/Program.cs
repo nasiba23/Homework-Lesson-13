@@ -6,9 +6,15 @@ namespace HomeworkLesson13
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            List<Task> taskList = new List<Task>();
 
+            for (int i = 0; i < 100; i++)
+            {
+                taskList.Add(Task.Run(() => Matrix.Draw()));
+            }
+            await Task.WhenAll(taskList);
         }
     }
         static class Matrix
