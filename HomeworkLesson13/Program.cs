@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HomeworkLesson13
@@ -17,7 +18,7 @@ namespace HomeworkLesson13
             await Task.WhenAll(taskList);
         }
     }
-        static class Matrix
+    static class Matrix
     {
         static object locker = new object();
         private static List<string> symbolsList = new List<string>()
@@ -89,5 +90,42 @@ namespace HomeworkLesson13
             }
         }
     }
+
+    static class Examples
+    {
+        static int Multithreading()
+        {
+            var result = 0;
+            Thread thread = new Thread(() =>
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    result += i;
+                }
+            });
+            return result;
+        }
+
+        static async Task<int> Asynchronous()
+        {
+            var result = 0;
+            await Task.Run(() =>
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    result += i;
+                }
+            });
+            return result;
+        }
+
+        static int ParallelMethod()
+        {
+            var result = 0;
+            Parallel.For(1, 100, (i, pr) => result += i);
+            return result;
+        }
+    }
+        
 
 }
