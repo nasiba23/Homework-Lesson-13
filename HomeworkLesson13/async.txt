@@ -1,0 +1,16 @@
+﻿Before asynchronous programming was not easy but with introduction of
+async/await keywords in C# 5 asynchronous programming has become much
+easier to work with. 
+
+In asynchronous programming a unit or units of code is implemented separately
+from main application thread, which receives notification of completion,
+failure or success of it.
+
+Task objects are used nn asynchronous programming and model asynchronous
+operations using async and await keywords.
+
+When using asynchronous programming, it is important to use it all the way,
+i.e. all callers should be asynchronous. Moreover, it is not advisable to return
+void in async methods because if there is an exception thrown the whole process will
+stop. When returning a task though, exceptions thrown are wrapped in the returned
+Task instead of an actual exception.
